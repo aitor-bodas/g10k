@@ -153,6 +153,7 @@ func doModuleInstallOrNothing(fm ForgeModule) {
 }
 
 func queryForgeAPI(fm ForgeModule) ForgeResult {
+        Debugf("URL:"+fm.baseURL)
 	baseURL := config.Forge.Baseurl
 	if len(fm.baseURL) > 0 {
 		baseURL = fm.baseURL

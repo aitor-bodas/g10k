@@ -430,7 +430,7 @@ func downloadForgeModule(name string, version string, fm ForgeModule, retryCount
 
 	//url := "https://forgeapi.puppetlabs.com/v3/files/puppetlabs-apt-2.1.1.tar.gz"
 	fileName := name + "-" + version + ".tar.gz"
-	fmt.Sprintf("--> FILENAME: %s", fileName)
+	Debugf(fmt.Sprintf("--> FILENAME: %s", fileName))
 
 	if !isDir(config.ForgeCacheDir + name + "-" + version) {
 		baseURL := config.Forge.Baseurl

@@ -443,6 +443,7 @@ func downloadForgeModule(name string, version string, fm ForgeModule, retryCount
 			baseURL = fm.baseURL
 		}
 		url := baseURL + "/v3/files/" + fileName
+                Debugf("111 ->" + fileName)
 		req, err := http.NewRequest("GET", url, nil)
 		req.Header.Set("User-Agent", "https://github.com/xorpaul/g10k/")
 		req.Header.Set("Connection", "close")

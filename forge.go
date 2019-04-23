@@ -315,6 +315,7 @@ func getMetadataForgeModule(fm ForgeModule) ForgeModule {
 
 		return ForgeModule{md5sum: modulemd5sum, fileSize: moduleFilesize}
 	}
+	        Debugf(fmt.Sprintf("2 ==> URL +%v", fm))
 	Fatalf("getMetadataForgeModule(): Unexpected response code while GETing " + url + " " + resp.Status)
 	return ForgeModule{}
 }
@@ -499,6 +500,7 @@ func downloadForgeModule(name string, version string, fm ForgeModule, retryCount
 				}
 			}()
 		} else {
+	        Debugf(fmt.Sprintf("1 ==> URL +%v", fm))
 			Fatalf(funcName + "(): Unexpected response code while GETing " + url + " " + resp.Status)
 		}
 	} else {

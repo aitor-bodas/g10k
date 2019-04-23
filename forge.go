@@ -153,7 +153,6 @@ func doModuleInstallOrNothing(fm ForgeModule) {
 }
 
 func queryForgeAPI(fm ForgeModule) ForgeResult {
-        Debugf("==> URL:"+fm.baseURL)
 	baseURL := config.Forge.Baseurl
 	if len(fm.baseURL) > 0 {
 		baseURL = fm.baseURL
@@ -183,6 +182,8 @@ func queryForgeAPI(fm ForgeModule) ForgeResult {
 	}
 	duration := time.Since(before).Seconds()
 	Verbosef("Querying Forge API " + url + " took " + strconv.FormatFloat(duration, 'f', 5, 64) + "s")
+
+	Debugf(fmt.Sprintf("==> URL +%v", fm))
 
 	mutex.Lock()
 	syncForgeTime += duration

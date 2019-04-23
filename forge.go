@@ -194,6 +194,7 @@ func queryForgeAPI(fm ForgeModule) ForgeResult {
 		// need to get latest version
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
+                	Debugf(fmt.Sprintf("==> URL +%v", fm))
 			Fatalf("queryForgeAPI(): Error while reading response body for Forge module " + fm.name + " from " + url + ": " + err.Error())
 		}
 
@@ -209,9 +210,11 @@ func queryForgeAPI(fm ForgeModule) ForgeResult {
 		return ForgeResult{true, fr.versionNumber, fr.md5sum, fr.fileSize}
 
 	} else if strings.TrimSpace(resp.Status) == "304 Not Modified" {
+	        Debugf(fmt.Sprintf("==> URL +%v", fm))
 		Debugf("Got 304 nothing to do for module " + fm.author + "-" + fm.name)
 		return ForgeResult{false, "", "", 0}
 	} else if strings.TrimSpace(resp.Status) == "404 Not Found" {
+	        Debugf(fmt.Sprintf("==> URL +%v", fm))
 		Fatalf("Received 404 from Forge for module " + fm.author + "-" + fm.name + " using URL " + url + " Does the module really exist and is it correctly named?")
 		return ForgeResult{false, "", "", 0}
 	}

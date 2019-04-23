@@ -153,7 +153,7 @@ func doModuleInstallOrNothing(fm ForgeModule) {
 }
 
 func queryForgeAPI(fm ForgeModule) ForgeResult {
-        Debugf("URL:"+fm.baseURL)
+        Debugf("==> URL:"+fm.baseURL)
 	baseURL := config.Forge.Baseurl
 	if len(fm.baseURL) > 0 {
 		baseURL = fm.baseURL
@@ -431,7 +431,7 @@ func downloadForgeModule(name string, version string, fm ForgeModule, retryCount
 
 	//url := "https://forgeapi.puppetlabs.com/v3/files/puppetlabs-apt-2.1.1.tar.gz"
 	fileName := name + "-" + version + ".tar.gz"
-	Debugf(fmt.Sprintf("--> FILENAME: %s", fileName))
+	Debugf("--> FILENAME: "+ fileName)
 
 	if !isDir(config.ForgeCacheDir + name + "-" + version) {
 		baseURL := config.Forge.Baseurl

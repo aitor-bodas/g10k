@@ -436,7 +436,6 @@ func downloadForgeModule(name string, version string, fm ForgeModule, retryCount
 
 	//url := "https://forgeapi.puppetlabs.com/v3/files/puppetlabs-apt-2.1.1.tar.gz"
 	fileName := name + "-" + version + ".tar.gz"
-	Debugf("--> FILENAME: "+ fileName)
 
 	if !isDir(config.ForgeCacheDir + name + "-" + version) {
 		baseURL := config.Forge.Baseurl
@@ -455,6 +454,7 @@ func downloadForgeModule(name string, version string, fm ForgeModule, retryCount
 		before := time.Now()
 		Debugf("GETing " + url)
 		resp, err := client.Do(req)
+                Debugf(fmt.Sprintf("11 --> %+v", req))
 		duration := time.Since(before).Seconds()
 		Verbosef("GETing " + url + " took " + strconv.FormatFloat(duration, 'f', 5, 64) + "s")
 		mutex.Lock()
